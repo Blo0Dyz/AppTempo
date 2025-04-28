@@ -21,31 +21,40 @@ namespace MauiAppTempo
 
                     if (t != null)
                     {
-                        string dadosprev = "";
-                        dadosprev =
-                                    $"Temperatura Mínima: {t.temp_min}°C\n" +
-                                    $"Temperatura Máxima: {t.temp_max}°C\n" +
-                                    $"Descrição: {t.description}\n" +
-                                    $"Velocidade do Vento: {t.speed} m/s\n" +
-                                    $"Visibilidade: {t.visibility} m\n" +
-                                    $"Nascer do Sol: {t.sunrise}\n" +
-                                    $"Pôr do Sol: {t.sunset}\n";
+                        string dados_previsao = "";
+
+                        dados_previsao = $"Latitude: {t.lat} \n" +
+                                         $"Longitude: {t.lon} \n" +
+                                         $"Nascer do Sol: {t.sunrise} \n" +
+                                         $"Por do Sol: {t.sunset} \n" +
+                                         $"Temp Máx: {t.temp_max} \n" +
+                                         $"Temp Min: {t.temp_min} \n" +
+                                         $"Descrição: {t.description} \n" +
+                                         $"speed: {t.speed} \n" +
+                                         $"Visibilidade: {t.visibility} \n";
+
+                        lbl_resultado.Text = dados_previsao;
+
                     }
                     else
                     {
-                        lbl_resultado.Text = "Cidade não encontrada";
-                    } }
+
+                        lbl_resultado.Text = "Sem dados de Previsão";
+                    }
+
+                }
                 else
                 {
-                    lbl_resultado.Text = "Digite uma cidade";
+                    lbl_resultado.Text = "Preencha a cidade.";
                 }
-                 }
+
+            }
             catch (Exception ex)
             {
-                await DisplayAlert("Erro", ex.Message, "OK");
-            } 
-        
-        
+                await DisplayAlert("Ops", ex.Message, "OK");
+            }
+
+
         }
     }
     }

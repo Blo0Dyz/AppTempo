@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using MauiAppTempo.Models;
-using System.Runtime.InteropServices.JavaScript;
+﻿using MauiAppTempo.Models;
 using Newtonsoft.Json.Linq;
 
 namespace MauiAppTempo.Services
@@ -18,9 +11,10 @@ namespace MauiAppTempo.Services
 
             string chave = "7ffee950d82e91d8e26aeba44c4798eb";
 
-            string url = $"https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={chave}&units=metric&lang=pt_br";
+            string url = $"https://api.openweathermap.org/data/2.5/weather?" +
+                         $"q={cidade}&units=metric&appid={chave}";
 
-            using(HttpClient client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage resp = await client.GetAsync(url);
 
